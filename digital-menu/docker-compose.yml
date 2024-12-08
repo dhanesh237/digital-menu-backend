@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: iamdkj237
+      POSTGRES_DB: postgres
+    ports:
+      - "5433:5432"
+
+  digital-menu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: digital-menu-container
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: iamdkj237
+    depends_on:
+      - postgres
