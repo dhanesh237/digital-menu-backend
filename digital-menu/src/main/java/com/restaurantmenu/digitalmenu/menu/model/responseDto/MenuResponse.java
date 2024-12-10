@@ -1,4 +1,4 @@
-package com.restaurantmenu.digitalmenu.model.responseDto;
+package com.restaurantmenu.digitalmenu.menu.model.responseDto;
 
 
 import lombok.Data;
@@ -14,7 +14,7 @@ public class MenuResponse {
 
     private String itemDescription;
 
-    private UUID restaurantId;
+    private String restaurantId;
 
     private Integer price;
 

@@ -1,9 +1,9 @@
-package com.restaurantmenu.digitalmenu.mapper;
+package com.restaurantmenu.digitalmenu.menu.mapper;
 
-import com.restaurantmenu.digitalmenu.model.requestDto.MenuCreateRequest;
-import com.restaurantmenu.digitalmenu.model.requestDto.MenuUpdateRequest;
-import com.restaurantmenu.digitalmenu.model.responseDto.MenuResponse;
-import com.restaurantmenu.digitalmenu.repository.entity.Menu;
+import com.restaurantmenu.digitalmenu.menu.model.requestDto.MenuCreateRequest;
+import com.restaurantmenu.digitalmenu.menu.model.requestDto.MenuUpdateRequest;
+import com.restaurantmenu.digitalmenu.menu.model.responseDto.MenuResponse;
+import com.restaurantmenu.digitalmenu.menu.repository.entity.Menu;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

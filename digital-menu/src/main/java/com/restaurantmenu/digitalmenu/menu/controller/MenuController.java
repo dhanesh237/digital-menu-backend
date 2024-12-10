@@ -1,9 +1,9 @@
-package com.restaurantmenu.digitalmenu.controller;
+package com.restaurantmenu.digitalmenu.menu.controller;
 
-import com.restaurantmenu.digitalmenu.model.requestDto.MenuCreateRequest;
-import com.restaurantmenu.digitalmenu.model.requestDto.MenuUpdateRequest;
-import com.restaurantmenu.digitalmenu.model.responseDto.MenuResponse;
-import com.restaurantmenu.digitalmenu.service.MenuService;
+import com.restaurantmenu.digitalmenu.menu.model.requestDto.MenuCreateRequest;
+import com.restaurantmenu.digitalmenu.menu.model.requestDto.MenuUpdateRequest;
+import com.restaurantmenu.digitalmenu.menu.model.responseDto.MenuResponse;
+import com.restaurantmenu.digitalmenu.menu.service.MenuService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,13 +49,16 @@ public class MenuController {
     @PatchMapping
     public ResponseEntity<Void> updateMenu(@RequestBody List<MenuUpdateRequest> menuUpdateRequest) {
 
-        // Call the service to update items and return the location URI for updated resources
-        menuService.updateItems(menuUpdateRequest);
+        // Call the service to update items
+        boolean isUpdated = menuService.updateItems(menuUpdateRequest);
 
-        // Return 201 Created with the Location header
-        return ResponseEntity
-                .created(URI.create("/api/v1/menus"))
-                .build();
+        // If the update is successful, return 204 No Content
+        if (isUpdated) {
+            return ResponseEntity.noContent().build();
+        }
+
+        // If no items were updated (perhaps due to invalid data or non-existing resource), return 404 Not Found
+        return ResponseEntity.notFound().build();
     }
 
 

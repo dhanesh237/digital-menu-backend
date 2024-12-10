@@ -1,8 +1,8 @@
-package com.restaurantmenu.digitalmenu.service;
+package com.restaurantmenu.digitalmenu.menu.service;
 
-import com.restaurantmenu.digitalmenu.model.requestDto.MenuCreateRequest;
-import com.restaurantmenu.digitalmenu.model.requestDto.MenuUpdateRequest;
-import com.restaurantmenu.digitalmenu.model.responseDto.MenuResponse;
+import com.restaurantmenu.digitalmenu.menu.model.requestDto.MenuCreateRequest;
+import com.restaurantmenu.digitalmenu.menu.model.requestDto.MenuUpdateRequest;
+import com.restaurantmenu.digitalmenu.menu.model.responseDto.MenuResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -27,7 +27,7 @@ public interface MenuService {
       * @param menuUpdateRequests the list of menu items with updates, including the IDs of the items to be updated.
       * @throws IllegalArgumentException if any menu item does not exist or if validation fails.
       */
-     void updateItems(@RequestBody List<MenuUpdateRequest> menuUpdateRequests);
+     boolean updateItems(@RequestBody List<MenuUpdateRequest> menuUpdateRequests);
 
 
      /**

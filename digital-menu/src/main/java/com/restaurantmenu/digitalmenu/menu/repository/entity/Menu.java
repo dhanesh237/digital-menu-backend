@@ -1,4 +1,4 @@
-package com.restaurantmenu.digitalmenu.repository.entity;
+package com.restaurantmenu.digitalmenu.menu.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class Menu {
     private String itemDescription;
 
     @Column(name = "restaurantId", nullable = false)
-    private UUID restaurantId;
+    private String restaurantId;
 
     @Column(name = "price", nullable = false)
     private Integer price;

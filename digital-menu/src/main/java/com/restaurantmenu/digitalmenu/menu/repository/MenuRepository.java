@@ -1,6 +1,6 @@
-package com.restaurantmenu.digitalmenu.repository;
+package com.restaurantmenu.digitalmenu.menu.repository;
 
-import com.restaurantmenu.digitalmenu.repository.entity.Menu;
+import com.restaurantmenu.digitalmenu.menu.repository.entity.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

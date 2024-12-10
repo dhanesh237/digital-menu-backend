@@ -1,4 +1,4 @@
-package com.restaurantmenu.digitalmenu.model.requestDto;
+package com.restaurantmenu.digitalmenu.menu.model.requestDto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +13,7 @@ public class MenuCreateRequest {
 
     private String itemDescription;
 
-    private UUID restaurantId;
+    private String restaurantId;
 
     private Integer price;
 
