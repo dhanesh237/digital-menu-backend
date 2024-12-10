@@ -16,6 +16,8 @@ public class MenuResponse {
 
     private String restaurantId;
 
+    private String restaurantName;
+
     private Integer price;
 
     private Integer totalQuantity;

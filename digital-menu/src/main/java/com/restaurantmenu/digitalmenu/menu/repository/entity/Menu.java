@@ -30,6 +30,9 @@ public class Menu {
     @Column(name = "restaurantId", nullable = false)
     private String restaurantId;
 
+    @Column(name = "restaurantName", nullable = false)
+    private String restaurantName;
+
     @Column(name = "price", nullable = false)
     private Integer price;
 
