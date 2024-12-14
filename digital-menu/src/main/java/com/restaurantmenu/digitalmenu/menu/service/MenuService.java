@@ -3,6 +3,7 @@ package com.restaurantmenu.digitalmenu.menu.service;
 import com.restaurantmenu.digitalmenu.menu.model.requestDto.MenuCreateRequest;
 import com.restaurantmenu.digitalmenu.menu.model.requestDto.MenuUpdateRequest;
 import com.restaurantmenu.digitalmenu.menu.model.responseDto.MenuResponse;
+import com.restaurantmenu.digitalmenu.restaurant.model.responseDto.RestaurantResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -36,4 +37,11 @@ public interface MenuService {
       * @return a list of {@link MenuResponse} objects representing the current menu items.
       */
      List<MenuResponse> viewItems();
+
+     /**
+      * Retrieves all restaurants by id and name available in the system.
+      *
+      * @return restaurant by id and name.
+      */
+     List<MenuResponse> viewMenusByRestaurantNameAndRestaurantId(String restaurantName, String restaurantId);
 }

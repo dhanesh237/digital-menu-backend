@@ -5,6 +5,7 @@ import com.restaurantmenu.digitalmenu.menu.model.requestDto.MenuUpdateRequest;
 import com.restaurantmenu.digitalmenu.menu.model.responseDto.MenuResponse;
 import com.restaurantmenu.digitalmenu.menu.service.MenuService;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.BadRequestException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class MenuController {
     public ResponseEntity<Void> addMenu(@RequestBody List<MenuCreateRequest> menuCreateRequest) {
 
         // Call the service to add items and return the location URI for created resources
-      menuService.addItems(menuCreateRequest);
+        menuService.addItems(menuCreateRequest);
 
         // Return 201 Created with the Location header
         return ResponseEntity
@@ -62,21 +63,42 @@ public class MenuController {
     }
 
 
+//    /**
+//     * Retrieves a list of all menu items.
+//     *
+//     * @return a ResponseEntity containing the list of all menu items and HTTP status 200 (OK).
+//     */
+//    @GetMapping()
+//    public ResponseEntity<List<MenuResponse>> viewMenuList() {
+//
+//        // Call the service to get all menu list
+//        List<MenuResponse> menuList = menuService.viewItems();
+//
+//        // Return all menu list
+//        return ResponseEntity.ok().body(menuList);
+//    }
+
+
     /**
-     * Retrieves a list of all menu items.
+     * Retrieves a restaurant details by restaurantId and restaurantName.
      *
-     * @return a ResponseEntity containing the list of all menu items and HTTP status 200 (OK).
+     * @return a ResponseEntity containing the list of all restaurants and HTTP status 200 (OK).
      */
-    @GetMapping()
-    public ResponseEntity<List<MenuResponse>> viewMenuList() {
 
-        // Call the service to get all menu list
-        List<MenuResponse> menuList = menuService.viewItems();
+    @GetMapping
+    public ResponseEntity<List<MenuResponse>> viewMenus(
+            @RequestParam(value = "restaurantId", required = false) String restaurantId,
+            @RequestParam(value = "restaurantName", required = false) String restaurantName) throws BadRequestException {
 
-        // Return all menu list
-        return ResponseEntity.ok().body(menuList);
+        if (restaurantId != null && restaurantName != null) {
+            // Fetch by ID and Name
+            List<MenuResponse> menuList =
+                    menuService.viewMenusByRestaurantNameAndRestaurantId(restaurantName, restaurantId);
+            return ResponseEntity.ok(menuList);
+        } else {
+           throw new BadRequestException("restaurantId or restaurantName not be null");
+        }
     }
-
 
 }
 

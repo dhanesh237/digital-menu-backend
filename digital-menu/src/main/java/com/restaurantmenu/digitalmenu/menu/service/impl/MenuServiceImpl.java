@@ -135,5 +135,23 @@ public class MenuServiceImpl implements MenuService {
     }
 
 
+    /**
+     * Retrieves a list of all restaurants.
+     *
+     * @return a ResponseEntity containing the list of all restaurants and HTTP status 200 (OK).
+     */
+    @Override
+    public List<MenuResponse> viewMenusByRestaurantNameAndRestaurantId(String restaurantName, String restaurantId) {
+        List<Menu> menuList = menuRepository.findByRestaurantNameAndRestaurantId(restaurantName, restaurantId);
+
+        if (menuList.isEmpty()) {
+            throw new RuntimeException("Menus not found by provided restaurant name and id.");
+        }
+
+        return menuMapper.menuToMenuResponse(menuList);
+    }
+
+
+
 }
 
